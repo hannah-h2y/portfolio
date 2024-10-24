@@ -14,19 +14,51 @@ tabBtn.forEach((tab, index) => {
    })
 })
 
-// cursor_portfolio
-const circle = document.querySelector(".circle");
-const circleBox = document.querySelector('.portfolio_content_box')
-circleBox.addEventListener("mousemove", (e) => {
-   const mouseX = e.clientX;
-   const mouseY = e.clientY;
-   circle.style.left = mouseX + "px";
-   circle.style.top = mouseY + "px";
-   circle.style.opacity = 1;
-});
-circleBox.addEventListener('mouseout', () => {
-   circle.style.opacity = 0;
-})
+
+const addScrollListeners = () => {
+   // 모든 스크롤 영역에 대해 이벤트 리스너 추가
+   const scrollElements = document.querySelectorAll('.portfolio_scroll');
+   scrollElements.forEach(scrollEl => {
+      scrollEl.removeEventListener('mouseenter', handleMouseEnter);
+      scrollEl.removeEventListener('mouseleave', handleMouseLeave);
+
+      scrollEl.addEventListener('mouseenter', handleMouseEnter);
+      scrollEl.addEventListener('mouseleave', handleMouseLeave);
+   });
+};
+
+const handleMouseEnter = (e) => {
+   const portScroll = e.currentTarget;
+   portScroll.style.overflowY = 'scroll';
+   const portBg = portScroll.querySelector('.port_img_bg');
+   portBg.style.display = 'none';
+};
+
+const handleMouseLeave = (e) => {
+   const portScroll = e.currentTarget;
+   portScroll.scrollTop = 0;
+   portScroll.style.overflow = 'hidden';
+   const portBg = portScroll.querySelector('.port_img_bg');
+   portBg.style.display = 'flex';
+};
+addScrollListeners();
+
+
+// cursor_portfolio_마우스 포인터
+// const circle = document.querySelector(".drag_circle");
+// const circleBox = document.querySelector('.portfolio_content_box')
+// const portText = document.querySelector('.portfolio_text')
+// circleBox.addEventListener("mousemove", (e) => {
+//    const mouseX = e.clientX;
+//    const mouseY = e.clientY;
+//    circle.style.left = mouseX + "px";
+//    circle.style.top = mouseY + "px";
+//    circle.style.opacity = 1;
+
+// });
+// circleBox.addEventListener('mouseout', () => {
+//    circle.style.opacity = 0;
+// })
 
 const contact = document.querySelector('#contact');
 const contextText = document.querySelectorAll('.contact_text span');
@@ -45,10 +77,57 @@ const handleScroll = () => {
 };
 window.addEventListener('scroll', handleScroll);
 
+// scroll_top
+const topBtn = document.querySelector('.contact_bottom button')
+
+topBtn.addEventListener('click', () => {
+   window.scrollTo({ top: 0, behavior: 'smooth' });
+   return false;
+})
+
+
+
+
+
+
+//swiper
+const portSwiper = new Swiper('.portfolio .swiper-container', {
+   direction: 'horizontal',
+   slidePerView: 1,
+   // loop: 'true',
+   scrollbar: {
+      el: '.swiper-scrollbar',
+      draggable: true,
+   },
+   on: {
+      init: function() {
+         addScrollListeners(); // 초기화 시 리스너 추가
+      },
+      slideChange: function() {
+         addScrollListeners(); // 슬라이드 변경 시 리스너 재설정
+      }
+   },
+   navigation : {
+		nextEl : '.button-next',
+		prevEl : '.button-prev'
+	}
+})
+const skillSwiper = new Swiper('.skills .swiper-container', {
+   direction: 'horizontal',
+   slidePerView: 1,
+   autoplay: {
+      delay: 1300
+   },
+   loop: 'true',
+   scrollbar: {
+      el: '.swiper-scrollbar',
+      draagable: 'true',
+   },
+})
 
 
 // 스크롤 트리거
-gsap.registerPlugin(ScrollTrigger, Draggable);
+gsap.registerPlugin(ScrollTrigger);
 const main = gsap.timeline()
    main.to('.main_visual_evt', {
       x: '-280vw',
@@ -63,21 +142,6 @@ ScrollTrigger.create({
    scrub: true,
    pin: '.main_visual',
    anticipatePin: 1,
-})
-
-
-const contactPath = gsap.timeline()
-contactPath.to(".contact_wrap ", {
-   borderRadius : 0,
-   scale: 1.1,
-   duration: 1,
-})
-ScrollTrigger.create({
-   animation: contactPath,
-   trigger: ".contact_wrap",
-   start: "top top",
-   end: "+=100%",
-   scrub: true,
 })
 
 const bubble = gsap.timeline()
@@ -136,31 +200,22 @@ ScrollTrigger.create({
    pin: true,
 })
 
-
-
-
-//swiper
-const portSwiper = new Swiper('.portfolio .swiper-container', {
-   direction: 'horizontal',
-   slidePerView: 1,
-   loop: 'true',
-   scrollbar: {
-      el: '.swiper-scrollbar',
-      draagable: 'true',
-   },
+const contactPath = gsap.timeline()
+contactPath.to(".contact_wrap ", {
+   borderRadius : 0,
+   scale: 1.1,
+   duration: 1,
 })
-const skillSwiper = new Swiper('.skills .swiper-container', {
-   direction: 'horizontal',
-   slidePerView: 1,
-   autoplay: {
-      delay: 1300
-   },
-   loop: 'true',
-   scrollbar: {
-      el: '.swiper-scrollbar',
-      draagable: 'true',
-   },
+ScrollTrigger.create({
+   animation: contactPath,
+   trigger: ".contact_wrap",
+   start: "top top",
+   end: "+=100%",
+   scrub: true,
 })
+
+
+
 
 
 

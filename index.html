@@ -14,9 +14,6 @@
    <!-- gsap-->
    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
-   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Draggable.min.js"></script>
-
-
    <!-- js -->
    <script defer src="./js/main.js"></script>
 </head>
@@ -225,132 +222,84 @@
          <section class="portfolio" id="portfolio">
             <div class="inner">
                <div class="portfolio_content_box">
-                  <div class="circle">Drag</div>
+                  <!-- <div class="drag_circle">drag</div> -->
                   <div class="portfolio_content active swiper-container">
                      <div class="swiper-wrapper">
                         <div class="swiper-slide">
                            <div class="portfolio_text">
-                              <strong>DB그룹</strong>
-                              <div class="port_text_middle">
-                                 <p>HTML&nbsp;CSS&nbsp;Jquery</p>
-                                 <p>Design100%&nbsp;Coding100%</p>
+                              <div class="port_text_title">
+                                 <strong>DB그룹</strong>
+                                 <p>&#45; DB그룹 메인페이지 디자인 및 코딩</p>
+                                 <p>&#45; DB그룹의 대표 색상을 활용한 깔끔한 디자인 추구</p>
+                                 <p>&#45; 광고 영상을 메인 비주얼로 활용</p>
                               </div>
-                              <div class="port_text_bottom">
-                                 <strong>content</strong>
-                                 <p><i class="ri-arrow-right-s-fill"></i>DB그룹 메인페이지 디자인 및 코딩</p>
-                                 <p><i class="ri-arrow-right-s-fill"></i>DB그룹의 대표 색상을 활용한 깔끔한 디자인 추구</p>
-                                 <p><i class="ri-arrow-right-s-fill"></i>광고 영상을 메인 비주얼로 활용</p>
+                              <div class="port_text_wrap">
+                                 <div class="port_middle_text">
+                                    <p><span>viewport</span>반응형</p>
+                                    <p><span>참여도</span>Design100%&nbsp;Coding100%</p>
+                                    <p><span>구성</span>메인 페이지</p>
+                                    <p><span>Tools</span>HTML&nbsp;CSS&nbsp;Jquery</p>
+                                 </div>
+                                 <div class="portfolio_link">
+                                    <a href="https://hannah-h2y.github.io/db/" target="_blank">웹 사이트 보러가기 <i class="ri-links-line"></i></a>
+                                    <a href="https://github.com/hannah-h2y/db" target="_blank">Code 확인하기 <i class="ri-code-line"></i></a>
+                                 </div>
                               </div>
                            </div>
                            <div class="portfolio_img_wrap">
-                              <a href="https://hannah-h2y.github.io/db/" target="_blank"><img src="images/db_design.png" alt="db디자인 웹 디자인 img"></a>
+                              <div class="portfolio_scroll">
+                                 <div class="port_img_bg">스크롤하여 디자인을 확인하세요<i class="ri-bear-smile-line"></i></div>
+                                 <img class="port_img" src="images/db_design.png" alt="db디자인 웹 디자인 img">
+                              </div>
                            </div>
                         </div>
                         <div class="swiper-slide">
                            <div class="portfolio_text">
-                              <strong>유한건강생활</strong>
-                              <div class="port_text_middle">
-                                 <p>HTML&nbsp;CSS&nbsp;Jquery</p>
-                                 <p>Coding100%</p>
+                              <div class="port_text_title">
+                                 <strong>유한건강생활</strong>
+                                 <p>&#45; 유한건강생활 홈페이지 클론 코딩</p>
+                                 <p>&#45; JQuery, swiper 라이브러리 활용</p>
+                                 <p>&#45; 기존 홈페이지와 동일하게 반응형 사이트로 제작</p>
                               </div>
-                              <div class="port_text_bottom">
-                                 <strong>content</strong>
-                                 <p><i class="ri-arrow-right-s-fill"></i>유한건강생활 홈페이지 클론 코딩</p>
-                                 <p><i class="ri-arrow-right-s-fill"></i>JQuer, swiper 라이브러리 활용
-                                 <p><i class="ri-arrow-right-s-fill"></i>기존 홈페이지와 동일하게 반응형 사이트로 제작</p>
+                              <div class="port_text_wrap">
+                                 <div class="port_middle_text">
+                                    <p><span>viewport</span>반응형</p>
+                                    <p><span>참여도</span>Coding100%</p>
+                                    <p><span>구성</span>메인 페이지</p>
+                                    <p><span>Tools</span>HTML&nbsp;CSS&nbsp;Jquery</p>
+                                 </div>
+                                 <div class="portfolio_link">
+                                    <a href="https://hannah-h2y.github.io/yuhancare/" target="_blank">웹 사이트 보러가기</a>
+                                    <a href="https://github.com/hannah-h2y/yuhancare" target="_blank">Code 확인하기</a>
+                                 </div>
                               </div>
                            </div>
                            <div class="portfolio_img_wrap">
-                              <a href="https://hannah-h2y.github.io/yuhancare/" target="_blank"><img src="images/youhancare.png" alt="유한건강생활 웹페이지 img"></a>
+                              <div class="portfolio_scroll">
+                                 <div class="port_img_bg">스크롤하여 디자인을 확인하세요<i class="ri-bear-smile-line"></i></div>
+                                 <img src="images/youhancare.png" alt="유한건강생활 웹 디자인 img"></div>
                            </div>
+                        </div>
+                     </div>
+                     <div class="navigation">
+                        <div class="button-prev"><img src="./images/line_left.png" alt=""></div>
+                        <div class="button-next"><img src="./images/line_right.png" alt=""></div>
+                     </div>
+                  </div>
+                  <div class="portfolio_content active swiper-container">
+                     <div class="swiper-wrapper">
+                        <div class="swiper-slide work">
+                           작업중입니다.
                         </div>
                      </div>
                   </div>
                   <div class="portfolio_content active swiper-container">
                      <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                           <div class="portfolio_text">
-                              <strong>PORTFOLIO</strong>
-                              <div class="port_text_middle">
-                                 <p>HTML&nbsp;CSS&nbsp;Jquery</p>
-                                 <p>Design100%&nbsp;Coding100%</p>
-                              </div>
-                              <div class="port_text_bottom">
-                                 <strong>content</strong>
-                                 <p>Lorem ipsum dolor sit amet consectetur.</p>
-                                 <p>Lorem ipsum dolor sit amet consectetur.</p>
-                                 <p>Lorem ipsum dolor sit amet consectetur.</p>
-                              </div>
-                           </div>
-                           <div class="portfolio_img_wrap">
-                              <span>DB그룹</span>
-                              <a href="#"></a>
-                           </div>
-                        </div>
-                        <div class="swiper-slide">
-                           <div class="portfolio_text">
-                              <strong>PORTFOLIO</strong>
-                              <div class="port_text_middle">
-                                 <p>HTML&nbsp;CSS&nbsp;Jquery</p>
-                                 <p>Design100%&nbsp;Coding100%</p>
-                              </div>
-                              <div class="port_text_bottom">
-                                 <strong>content</strong>
-                                 <p>texttext</p>
-                                 <p>Lorem ipsum dolor sit amet consectetur.</p>
-                                 <p>Lorem ipsum dolor sit amet consectetur.</p>
-                              </div>
-                           </div>
-                           <div class="portfolio_img_wrap">
-                              <span>DB그룹</span>
-                              <a href="#"></a>
-                           </div>
+                        <div class="swiper-slide work">
+                           작업중입니다.
                         </div>
                      </div>
                   </div>
-                  <div class="portfolio_content active swiper-container">
-                     <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                           <div class="portfolio_text">
-                              <strong>PORTFOLIO</strong>
-                              <div class="port_text_middle">
-                                 <p>HTML&nbsp;CSS&nbsp;Jquery</p>
-                                 <p>Design100%&nbsp;Coding100%</p>
-                              </div>
-                              <div class="port_text_bottom">
-                                 <strong>content</strong>
-                                 <p>Lorem ipsum dolor sit amet consectetur.</p>
-                                 <p>Lorem ipsum dolor sit amet consectetur.</p>
-                                 <p>Lorem ipsum dolor sit amet consectetur.</p>
-                              </div>
-                           </div>
-                           <div class="portfolio_img_wrap">
-                              <span>DB그룹</span>
-                              <a href="#"></a>
-                           </div>
-                        </div>
-                        <div class="swiper-slide">
-                           <div class="portfolio_text">
-                              <strong>PORTFOLIO</strong>
-                              <div class="port_text_middle">
-                                 <p>HTML&nbsp;CSS&nbsp;Jquery</p>
-                                 <p>Design100%&nbsp;Coding100%</p>
-                              </div>
-                              <div class="port_text_bottom">
-                                 <strong>content</strong>
-                                 <p>texttext</p>
-                                 <p>Lorem ipsum dolor sit amet consectetur.</p>
-                                 <p>Lorem ipsum dolor sit amet consectetur.</p>
-                              </div>
-                           </div>
-                           <div class="portfolio_img_wrap">
-                              <span>DB그룹</span>
-                              <a href="#"></a>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-
                </div>
                <div class="portfolio_btn_wrap">
                   <button class="tab_btn active">Web publishing</button>
@@ -410,7 +359,7 @@
                <div class="email_wrap">
                   <strong>CONTACT</strong>
                   <div class="email">
-                     <a href="mailto:h2y.hannah@gmail.com">h2y.hannah@gmail.com&nbsp;<i class="ri-mail-fill"></i></a>
+                     <a href="mailto:h2y.hannah@gmail.com">h2y.hannah@gmail.com&nbsp;<i class="ri-mail-send-line"></i></a>
                   </div>
                </div>
             </div>
@@ -418,7 +367,7 @@
       </main>
       <footer>
          <div class="contact_bottom">
-            <a href="#main_content"><span>TOP</span></a>
+            <button type="button">TOP</button>
             <p class="copyright">Copyright 2024. HYEYOON all rights reserved.</p>
          </div>
       </footer>
