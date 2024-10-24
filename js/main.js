@@ -16,8 +16,8 @@ tabBtn.forEach((tab, index) => {
 
 
 const addScrollListeners = () => {
-   // 모든 스크롤 영역에 대해 이벤트 리스너 추가
    const scrollElements = document.querySelectorAll('.portfolio_scroll');
+
    scrollElements.forEach(scrollEl => {
       scrollEl.removeEventListener('mouseenter', handleMouseEnter);
       scrollEl.removeEventListener('mouseleave', handleMouseLeave);
@@ -25,6 +25,7 @@ const addScrollListeners = () => {
       scrollEl.addEventListener('mouseenter', handleMouseEnter);
       scrollEl.addEventListener('mouseleave', handleMouseLeave);
    });
+
 };
 
 const handleMouseEnter = (e) => {
@@ -42,6 +43,37 @@ const handleMouseLeave = (e) => {
    portBg.style.display = 'flex';
 };
 addScrollListeners();
+
+
+
+const designScrollListener = () => {
+   const ScrollDesign = document.querySelectorAll('.design_scroll');
+
+   ScrollDesign.forEach(designEl => {
+      designEl.removeEventListener('mouseenter', handleDesignEnter);
+      designEl.removeEventListener('mouseleave', handleDesignLeave);
+
+      designEl.addEventListener('mouseenter', handleDesignEnter);
+      designEl.addEventListener('mouseleave', handleDesignLeave);
+   });
+}
+const handleDesignEnter = (e) => {
+   const designScroll = e.currentTarget;
+   designScroll.style.overflowY = 'scroll';
+   const designBg = designScroll.querySelector('.design_img_bg');
+   designBg.style.display = 'none';
+};
+
+const handleDesignLeave = (e) => {
+   const designScroll = e.currentTarget;
+   designScroll.scrollTop = 0;
+   designScroll.style.overflow = 'hidden';
+   const designBg = designScroll.querySelector('.design_img_bg');
+   designBg.style.display = 'flex';
+};
+designScrollListener();
+
+
 
 
 // cursor_portfolio_마우스 포인터
@@ -91,27 +123,6 @@ topBtn.addEventListener('click', () => {
 
 
 //swiper
-const portSwiper = new Swiper('.portfolio .swiper-container', {
-   direction: 'horizontal',
-   slidePerView: 1,
-   // loop: 'true',
-   scrollbar: {
-      el: '.swiper-scrollbar',
-      draggable: true,
-   },
-   on: {
-      init: function() {
-         addScrollListeners(); // 초기화 시 리스너 추가
-      },
-      slideChange: function() {
-         addScrollListeners(); // 슬라이드 변경 시 리스너 재설정
-      }
-   },
-   navigation : {
-		nextEl : '.button-next',
-		prevEl : '.button-prev'
-	}
-})
 const skillSwiper = new Swiper('.skills .swiper-container', {
    direction: 'horizontal',
    slidePerView: 1,
@@ -120,10 +131,60 @@ const skillSwiper = new Swiper('.skills .swiper-container', {
    },
    loop: 'true',
    scrollbar: {
-      el: '.swiper-scrollbar',
       draagable: 'true',
    },
 })
+
+const portSwiper = new Swiper('.portfolio .swiper-pub', {
+   direction: 'horizontal',
+   slidePerView: 1,
+   scrollbar: {
+      el: '.swiper-scrollbar',
+      draggable: true,
+   },
+   on: {
+      init: function() {
+         addScrollListeners();
+      },
+      slideChange: function() {
+         addScrollListeners();
+      }
+   },
+   navigation : {
+		nextEl : '.button-next',
+		prevEl : '.button-prev'
+	}
+})
+
+const designSwiper = new Swiper('.swiper-design', {
+   direction: 'horizontal',
+   slidesPerView: 2,
+   loop: false,
+   scrollbar: {
+      draggable: true,
+   },
+   navigation: {
+      nextEl: '.button-next',
+      prevEl: '.button-prev',
+   },
+   breakpoints: {
+      768: {
+         slidesPerView: 1,
+      },
+      1024: {
+         slidesPerView: 2,
+      }
+   },
+   on: {
+      init: function() {
+         designScrollListener();
+      },
+      slideChange: function() {
+         designScrollListener();
+      }
+   }
+});
+
 
 
 // 스크롤 트리거
