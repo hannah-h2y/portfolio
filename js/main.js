@@ -1,6 +1,7 @@
 // main.js
 
 
+
 // portfolio
 const tabBtn = document.querySelectorAll('.tab_btn')
 const portContent = document.querySelectorAll('.portfolio_content')
@@ -15,6 +16,39 @@ tabBtn.forEach((tab, index) => {
 })
 
 
+// portfolio_Progress bar
+// const nextBtn = document.querySelector('.button-next');
+// const prevBtn = document.querySelector('.button-prev');
+
+// nextBtn.addEventListener('click', () => {
+//    portSwiper.slideNext();
+//    animateProgressBar();
+// });
+
+// prevBtn.addEventListener('click', () => {
+//    portSwiper.slidePrev();
+//    animateProgressBar();
+// });
+
+function animateProgressBar() {
+   const progressBars = document.querySelectorAll('.progress');
+
+   progressBars.forEach((bar) => {
+      bar.style.transition = 'none';
+      bar.style.width = '0%';
+
+      setTimeout(() => {
+         bar.style.transition = 'width 3s ease-in-out';
+         bar.style.width = '100%';
+      }, 50);
+   });
+}
+document.addEventListener('DOMContentLoaded', () => {
+   animateProgressBar();
+});
+
+
+
 const addScrollListeners = () => {
    const scrollElements = document.querySelectorAll('.portfolio_scroll');
 
@@ -25,7 +59,6 @@ const addScrollListeners = () => {
       scrollEl.addEventListener('mouseenter', handleMouseEnter);
       scrollEl.addEventListener('mouseleave', handleMouseLeave);
    });
-
 };
 
 const handleMouseEnter = (e) => {
@@ -72,8 +105,6 @@ const handleDesignLeave = (e) => {
    designBg.style.display = 'flex';
 };
 designScrollListener();
-
-
 
 
 // cursor_portfolio_마우스 포인터
@@ -145,9 +176,12 @@ const portSwiper = new Swiper('.portfolio .swiper-pub', {
    on: {
       init: function() {
          addScrollListeners();
+         animateProgressBar();
+
       },
       slideChange: function() {
          addScrollListeners();
+         animateProgressBar();
       }
    },
    navigation : {
@@ -158,7 +192,35 @@ const portSwiper = new Swiper('.portfolio .swiper-pub', {
 
 const designSwiper = new Swiper('.swiper-design', {
    direction: 'horizontal',
-   slidesPerView: 2,
+   spaceBetween: '-73px',
+   loop: false,
+   scrollbar: {
+      draggable: true,
+   },
+   navigation: {
+      nextEl: '.button-next',
+      prevEl: '.button-prev',
+   },
+   breakpoints: {
+      768: {
+         slidesPerView: 1,
+      },
+      1024: {
+         slidesPerView: 2,
+      }
+   },
+   on: {
+      init: function() {
+         designScrollListener();
+      },
+      slideChange: function() {
+         designScrollListener();
+      }
+   }
+});
+const jsReactSwiper = new Swiper('.swiper-js', {
+   direction: 'horizontal',
+   spaceBetween: '-100px',
    loop: false,
    scrollbar: {
       draggable: true,

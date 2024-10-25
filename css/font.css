@@ -36,4 +36,10 @@
    src: url(../fonts/Hakgyoansim\ Puzzle\ OTF\ Outline.otf);
    font-weight: 500;
 }
+@font-face {
+   font-family: 'Ria';
+   src: url(../fonts/RiaSans-ExtraBold.ttf);
+   font-weight: 700;
+}
+
 

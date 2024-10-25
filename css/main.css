@@ -424,6 +424,7 @@ a {
 .portfolio .portfolio_content {
    display: none;flex-direction: row;
    position: relative;
+   padding: 2% 0;
    width: 100%;height: 100%;overflow: hidden;
 }
 .portfolio .portfolio_content.active {
@@ -437,51 +438,92 @@ a {
    padding: 0 3%;
    width: 100%;height: 100%;
 }
-
 .portfolio .swiper-pub .portfolio_text {
    display: flex;
    flex-direction: column;
    align-items: flex-start;
-   padding: 100px 0;
-   height: 100%;width: 50%;
+   justify-content: center;
+   width: 50%;
+   font-size: 16px;
 }
 .portfolio .portfolio_text .port_text_title {
    display: flex;
    flex-direction: column;
-   padding-bottom: 80px;
+   padding-bottom: 15%;
    width: 100%;
 }
-.portfolio .portfolio_text .port_text_title>strong {
-   padding-bottom: 20px;
-   font-family: 'Puzzle';
-   font-size: 72px;
+.portfolio .portfolio_text strong {
+   font-family: 'Ria';
+   font-size: 64px;
+   color: #222;
+   font-weight: 700;
+   padding-bottom: 0.1em;
 }
 .portfolio .portfolio_text .port_text_title>p {
-   padding-bottom: 5px;
+   padding-bottom: 0.25em;
    text-align: left;
    font-size: 20px;
 }
-.portfolio .portfolio_text .port_text_wrap {
+.portfolio .portfolio_text .port_tools_wrap {
    display: flex;
    flex-direction: column;
    width: 100%;
+   padding-bottom: 2em;
 }
-.portfolio .port_text_wrap .port_middle_text {
-   padding-bottom: 80px;
+.portfolio .portfolio_text .port_tools_wrap .port_tools_box {
+   display: flex;flex-direction: row;gap: 5px;
 }
-.portfolio .port_text_wrap .port_middle_text p {
-   font-size: 20px;
-   padding-bottom: 10px;
+.portfolio .port_tools_wrap .port_tools_box .port_tools_img {
+   width: 40px;height: 40px;
 }
-.portfolio .port_text_wrap .port_middle_text p>span {
+.portfolio .port_tools_box .port_tools_img img {
    display: block;
-   font-size: 14px;
+   width: 100%;height: 100%;
+   object-fit: contain;
 }
-.portfolio .port_text_wrap .portfolio_link {
+.portfolio .portfolio_text .port_percent_box {
+   display: flex;gap: 10px;
+   flex-direction: column;
+   padding-bottom: 20%;
+}
+.portfolio .portfolio_text .port_percent_box .port_percent {
+   display: flex;flex-direction: row;
+}
+.portfolio .portfolio_text .port_percent .bar_text {
+   font-size: 16px;
+   width: 50px;
+}
+.portfolio .portfolio_text .port_percent .progressbar{
+   width:200px;
+   height:20px;
+   background:#fefefe;
+   border-radius: 10px;
+   position:relative;
+}
+.portfolio .portfolio_text .port_percent .progressbar span {
+   display: block;
+   position: absolute;
+   top: 0;left: 0;
+   z-index: 9999;
+   width: 100%;
+   text-align: center;
+}
+.portfolio .portfolio_text .port_percent .progress{
+   position:absolute;
+   transition: width 3s ease-in-out;
+   width: 0;
+   height:100%;
+   left:0;
+   top:0;
+   border-radius: 10px;
+   background: linear-gradient(60deg, var(--point-color-3), var(--point-color-6));
+   text-align: right;
+}
+.portfolio .portfolio_text .portfolio_link {
    display: flex;
    gap: 50px;
 }
-.portfolio .port_text_wrap .portfolio_link a {
+.portfolio .portfolio_text .portfolio_link a {
    display: block;
    width: 180px;
    padding: 15px;
@@ -491,7 +533,7 @@ a {
    font-size: 16px;
    color: #000;
 }
-.portfolio .port_text_wrap .portfolio_link a:hover {
+.portfolio .portfolio_text .portfolio_link a:hover {
    background-color: var(--point-color-2);
    border: none;
    font-weight: 700;
@@ -551,7 +593,8 @@ a {
 .navigation .button-next img, .button-prev img {
    width: 30px;
 }
-.portfolio .swiper-design .swiper-wrapper {
+.portfolio .swiper-design .swiper-wrapper,
+.portfolio .swiper-js .swiper-wrapper {
    display: flex;
    width: 100%;
    height: 100%;
@@ -559,13 +602,14 @@ a {
    align-items: center;
 }
 .portfolio .swiper-design .swiper-slide {
-   width: 50%;flex-shrink: 0;
+   flex-shrink: 0;
    display: flex;
    flex-direction: column;
    align-items: center;
    justify-content: center;
-   height: 80%;
+   height: 80%;width: 50%;
 }
+
 .portfolio .swiper-design .web_design strong {
    padding-bottom: 10px;
    font-size: 35px;
@@ -601,6 +645,7 @@ a {
    font-size: 24px;
    font-weight: 700;
 }
+
 .portfolio .web_design .design_scroll img {
    display: flex;
    position: absolute;top: 0;
@@ -623,18 +668,57 @@ a {
    border: none;
    font-weight: 700;
 }
-
-/* 포트폴리오 리액트부분 */
-.swiper-js {
-   width: 100%;height: 100%;
-   display: flex;
-   flex-shrink: 0;
-   justify-content: center;
+.portfolio .swiper-js .swiper-slide {
+   display: flex;flex-shrink: 0;
+   flex-direction: column;
    align-items: center;
-   font-size: 80px;
+   justify-content: center;
+   width: 50%;
+   padding: 0 7%;
+}
+.portfolio .swiper-js .js_react p {
+   font-size: 16px;
+   padding-bottom: 0.5em;
 }
 
-
+.portfolio .swiper-js .js_react strong {
+   font-size: 40px;
+   padding-bottom: 0.5em;
+}
+.portfolio .swiper-js .js_react .js_react_img {
+   position: relative;
+   width: 100%;height: 400px;
+   margin-bottom: 10%;
+}
+.portfolio .swiper-js .js_react .js_react_img::after {
+   content: "작업중입니다.";display: flex;
+   justify-content: center;
+   align-items: center;
+   position: absolute;top: 0;
+   background-color: rgba(0, 0, 0, 0.8);
+   color: #fff;
+   font-size: 32px;
+   width: 100%;height: 100%;
+}
+.portfolio .js_react .js_react_img img {
+   display: block;
+   width: 100%;height: 100%;
+}
+.portfolio .swiper-js .js_react a {
+   display: block;
+   padding: 15px;
+   border-radius: 8px;
+   width: 180px;
+   text-align: center;
+   font-size: 16px;
+   color: #000;
+   background-color: rgba(255, 255, 255, .7);
+}
+.portfolio .js_react a:hover {
+   background-color: var(--point-color-2);
+   border: none;
+   font-weight: 700;
+}
 
 /* .drag_circle {
    display: flex;
