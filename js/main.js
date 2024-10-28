@@ -1,6 +1,40 @@
 // main.js
 
+//header
+const header = document.getElementById('header');
+const aboutMeSection = document.querySelector('.about_me');
 
+window.addEventListener('scroll', () => {
+   const sectionTop = aboutMeSection.getBoundingClientRect().top;
+
+   if (sectionTop <= 0) {
+      header.classList.add('fixed');
+   } else {
+      header.classList.remove('fixed');
+   }
+});
+
+//main_visual
+const imgBox = [
+   {src: "images/main_img_1.jpg"},
+   {src: "images/main_img_2.jpg"},
+   {src: "images/main_img_3.jpg"},
+   {src: "images/main_img_4.jpg"},
+   {src: "images/main_img_6.jpg"},
+   {src: "images/main_img_7.jpg"},
+];
+let num = 0;
+
+const visualImg = document.getElementById('visual_img');
+
+function changeImg() {
+   visualImg.setAttribute("src", imgBox[num].src);
+   num++;
+   if(num >= imgBox.length) {
+      num = 0;
+   }
+}
+setInterval(changeImg, 1000);
 
 // portfolio
 const tabBtn = document.querySelectorAll('.tab_btn')
@@ -15,20 +49,6 @@ tabBtn.forEach((tab, index) => {
    })
 })
 
-
-// portfolio_Progress bar
-// const nextBtn = document.querySelector('.button-next');
-// const prevBtn = document.querySelector('.button-prev');
-
-// nextBtn.addEventListener('click', () => {
-//    portSwiper.slideNext();
-//    animateProgressBar();
-// });
-
-// prevBtn.addEventListener('click', () => {
-//    portSwiper.slidePrev();
-//    animateProgressBar();
-// });
 
 function animateProgressBar() {
    const progressBars = document.querySelectorAll('.progress');
@@ -251,20 +271,37 @@ const jsReactSwiper = new Swiper('.swiper-js', {
 
 // 스크롤 트리거
 gsap.registerPlugin(ScrollTrigger);
-const main = gsap.timeline()
-   main.to('.main_visual_evt', {
-      x: '-280vw',
-      duration: 1,
-      ease: "power3.out",
+
+const visual = gsap.timeline()
+visual.to('.main_text_1', {
+   top: '50%',
+   left: '20%',
+   duration: 1,
+})
+visual.to('.main_text_2', {
+   top: '40%',
+   left:'80%',
+   fontSize: '140px',
+   duration: 1,
+})
+visual.to('.main_text_3', {
+   top: '70%',
+   left:'75%',
+   fontSize: '140px',
+   zIndex: 9999,
+   duration: 1,
+})
+visual.to('.visual_img_box', {
+   scale: 1.5,
+   duration: 1,
 })
 ScrollTrigger.create({
-   animation: main,
-   tirgger: ".main_visual_evt p",
-   start: "top top",
-   end: "+=450%",
+   animation: visual,
+   trigger: ".main_text_1",
+   start: 'top top',
+   end: "+=120%",
    scrub: true,
-   pin: '.main_visual',
-   anticipatePin: 1,
+   pin: '.main_visual'
 })
 
 const bubble = gsap.timeline()

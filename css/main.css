@@ -33,7 +33,9 @@ a {
    background: transparent;color: #FFF;
    font-weight: 500;line-height: 50px;text-align: center;
 }
-
+section {
+   min-height: 700px;
+}
 
 /* header */
 .header {
@@ -41,12 +43,18 @@ a {
    justify-content: space-between;
    align-items: center;
    z-index: 9999;
-   position: fixed;
-   top: 0;left: 0;
+   position: absolute;
+   top: -200px;left: 0;
    width: 100%;
    padding: 20px 30px;
    background: transparent;
    overflow: hidden;
+   transition: top 0.3s;
+}
+.header.fixed {
+   position: fixed;
+   top: 0;
+   z-index: 9999;
 }
 .header .logo_wrap a{
    display: flex;
@@ -86,85 +94,81 @@ a {
    display: inline-block;
    background: var(--point-color-6);
    opacity: 0.4;
-
 }
-
-/* main_visual */
 .main_visual {
-   width: 100vw;height: 120vh;
-   background: var(--point-color-2);
-
-}
-
-.main_visual .main_visual_evt {
-   position: absolute;
-   top: 0;width: 300vw;
-   height: 100%;
-   will-change: transform;
-}
-.main_visual .main_visual_evt .shape {
-   position: absolute;
-   width: 300px;
-   height: 300px;
-   overflow: hidden;
-   animation: rotateShape 8s infinite linear;
-}
-.main_visual .main_visual_evt #shape_0 {
-   top: 10%;left: 0;
-
-}
-@keyframes rotateShape {
-   100% {
-      transform: rotate(360deg);
-   }
-
-}
-.main_visual .main_visual_evt #shape_1 {
-   top: 50%;left: 15%;
-}
-.main_visual .main_visual_evt #shape_2 {
-   top: 25%;left: 30%;
-   width: 400px;height: 400px;
-}
-.main_visual .main_visual_evt #shape_3 {
-   top: 45%;left: 45%;
-}
-.main_visual .main_visual_evt #shape_4 {
-   top: 15%;left: 60%;
-}
-.main_visual .main_visual_evt #shape_5 {
-   top: 30%;left: 75%;
-}
-.main_visual .main_visual_evt #shape_6 {
-   top: 55%;left: 90%;
-   width: 400px;height: 400px;
-}
-.main_visual .main_visual_evt #shape_7 {
-   top: 15%;left: 120%;
-}
-.main_visual .main_visual_evt #shape_8 {
-   top: 20%;left: 105%;
-   width: 400px;height: 400px;
-}
-
-.main_visual .main_visual_evt img {
-   width: 100%;
-   height: 100%;
-   object-fit: contain;
-}
-.main_visual .main_visual_evt> p {
-   width: 100%;
-   color: #000;
-   font-family: 'Pretendard';
-   font-size: 30vw;
+   width: 100vw;height: 100vh;
+   position: relative;
    font-weight: 700;
-   text-align: left;
-   margin: 0;
-   padding: 120px;
+   overflow: hidden;
+}
+.main_visual .main_text {
+   position: absolute;
+   left: 50%;
+   transform: translateX(-50%);
+   font-family: "Ria";
+   font-size: 100px;
+}
+.main_visual .main_text_1 {
+   top: 10%;
+   z-index: 9999;
+}
+.main_visual .main_text_2 {
+   top: 30%;
+   font-size: 120px;
+}
+.main_visual .main_text_3 {
+   top: 35%;
+   font-size: 120px;
+}
+.main_visual .visual_img_box {
+   position: absolute;left: 50%;top: 60%;;
+   transform: translate(-50%, -50%);
+   width: 500px;height: 400px;
+}
+.main_visual .visual_img_box img {
+   display: block;width: 100%;height: 100%;
+   object-fit: cover;
+   object-position: 0 70%;
+}
+.main_visual .main_scroll {
+   display: flex;gap: 10px;
+   justify-content: center;
+   align-items: center;
+   position: absolute;
+   right: 0;
+   bottom: 30px;
+   transform: rotate(90deg);
+}
+.main_progress{
+   width: 100px;
+   height: 2px;
+   border-radius: 10px;
+   overflow:hidden;
+   background: #ccc;
+   position:relative;
+}
+.main_progress::after{
+   content:'';
+   position:absolute;
+   top:0;
+   left:0;
+   height: 2px;
+   width:0;
+   background: #000;
+   animation: progress 3s ease forwards infinite;
+}
+   @keyframes progress{
+   0%{
+      width: 0px
+   }
+   100%{
+      width: 100%;
+   }
 }
 
 /* about_me */
 .about_me {
+   margin-top: 100px;
    position: relative;
    width: 100vw;height: 100vh;
    overflow: hidden;
@@ -286,6 +290,40 @@ a {
    width: 200px;height: 200px;bottom: -600px;left: 600px;
    background: var(--point-color-6);
    z-index: 999;
+}
+
+@media screen and (max-width: 1200px) {
+   .about_me .about_title {
+      font-size: 80px;
+   }
+   .about_me .inner .about_text_wrap p {
+      font-size: 16px;
+   }
+   .about_me .inner .about_text_wrap .about_text_title {
+      font-size: 16px;
+   }
+   .about_me .about_text_wrap .about_date {
+      font-size: 12px;
+   }
+}
+
+@media screen and (max-width: 800px) {
+   .about_me {
+      min-width: 800px;
+   }
+   .about_me .about_title {
+      font-size: 50px;
+      line-height: 50px;
+   }
+   .about_me .inner .about_text_wrap p {
+      font-size: 16px;
+   }
+   .about_me .inner .about_text_wrap .about_text_title {
+      font-size: 16px;
+   }
+   .about_me .about_text_wrap .about_date {
+      font-size: 12px;
+   }
 }
 
 
@@ -436,6 +474,7 @@ a {
 .portfolio .swiper-pub .swiper-slide {
    display: flex;
    padding: 0 3%;
+   gap: 10px;
    width: 100%;height: 100%;
 }
 .portfolio .swiper-pub .portfolio_text {
@@ -491,7 +530,7 @@ a {
 }
 .portfolio .portfolio_text .port_percent .bar_text {
    font-size: 16px;
-   width: 50px;
+   width: 70px;
 }
 .portfolio .portfolio_text .port_percent .progressbar{
    width:200px;
@@ -720,6 +759,34 @@ a {
    font-weight: 700;
 }
 
+@media screen and (max-width: 1500px) {
+   .portfolio {
+      min-width: 1200px;
+   }
+   .portfolio .inner .portfolio_btn_wrap .tab_btn {
+      font-size: 20px;
+   }
+   .portfolio .swiper-pub .swiper-slide {
+      padding: 0 2%;
+   }
+   .portfolio .portfolio_text strong {
+      font-size: 54px;
+   }
+   .portfolio .portfolio_text .port_text_title>p {
+      font-size: 16px;
+   }
+   .portfolio .portfolio_text .portfolio_link {
+      gap: 25px;
+   }
+   .portfolio .portfolio_text .portfolio_link a {
+      width: 160px;padding: 10px;
+   }
+   .navigation .button-next img, .button-prev img {
+      width: 20px;
+   }
+
+}
+
 /* .drag_circle {
    display: flex;
    justify-content: center;align-items: center;
@@ -801,6 +868,29 @@ a {
       opacity: 0.5;
       z-index: -1;
 }
+
+@media screen and (max-width: 900px) {
+   .contact_wrap>p {
+      display: flex;
+      justify-content: center;align-items: center;
+      font-size: 16px;
+      text-align: center;
+   }
+   .contact .contact_wrap .email_wrap strong {
+      font-size: 70px;
+   }
+}
+@media screen and (max-width: 600px) {
+   .contact_wrap>p {
+      font-size: 12px;
+   }
+   .contact .contact_wrap .email_wrap strong {
+      font-size: 40px;
+   }
+   .contact .contact_wrap .email_wrap .email a {
+      font-size: 16px;
+   }
+}
 /* footer */
 footer {
    width: 100vw;
@@ -819,4 +909,9 @@ footer .contact_bottom button {
    background: var(--point-color-1);
    font-size: 16px;
    font-weight: 700;
+}
+@media screen and (max-width: 500px) {
+   footer .contact_bottom  {
+      font-size: 14px;
+   }
 }
