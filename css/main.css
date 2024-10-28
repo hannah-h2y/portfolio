@@ -100,6 +100,7 @@ section {
    position: relative;
    font-weight: 700;
    overflow: hidden;
+   background-color: var(--point-color-3);
 }
 .main_visual .main_text {
    position: absolute;
@@ -114,11 +115,11 @@ section {
 }
 .main_visual .main_text_2 {
    top: 30%;
-   font-size: 120px;
+   font-size: 0;
 }
 .main_visual .main_text_3 {
    top: 35%;
-   font-size: 120px;
+   font-size: 0;
 }
 .main_visual .visual_img_box {
    position: absolute;left: 50%;top: 60%;;
@@ -168,7 +169,6 @@ section {
 
 /* about_me */
 .about_me {
-   margin-top: 100px;
    position: relative;
    width: 100vw;height: 100vh;
    overflow: hidden;
@@ -784,27 +784,7 @@ section {
    .navigation .button-next img, .button-prev img {
       width: 20px;
    }
-
 }
-
-/* .drag_circle {
-   display: flex;
-   justify-content: center;align-items: center;
-   position: fixed;top: 0;left: 0;
-   z-index: 9999;
-   cursor: pointer;
-   pointer-events: none;
-   width: 80px;
-   height: 80px;
-   border-radius: 50%;
-   font-size: 16px;
-   font-family: 'Pretendard';
-   font-weight: 700;
-   transform: translate(-50%, -50%);
-   transition: all 0s ease-in-out;
-   opacity: 0;
-} */
-
 
 /* contact */
 .contact {

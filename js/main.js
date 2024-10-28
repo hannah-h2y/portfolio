@@ -127,22 +127,6 @@ const handleDesignLeave = (e) => {
 designScrollListener();
 
 
-// cursor_portfolio_마우스 포인터
-// const circle = document.querySelector(".drag_circle");
-// const circleBox = document.querySelector('.portfolio_content_box')
-// const portText = document.querySelector('.portfolio_text')
-// circleBox.addEventListener("mousemove", (e) => {
-//    const mouseX = e.clientX;
-//    const mouseY = e.clientY;
-//    circle.style.left = mouseX + "px";
-//    circle.style.top = mouseY + "px";
-//    circle.style.opacity = 1;
-
-// });
-// circleBox.addEventListener('mouseout', () => {
-//    circle.style.opacity = 0;
-// })
-
 const contact = document.querySelector('#contact');
 const contextText = document.querySelectorAll('.contact_text span');
 
@@ -297,9 +281,9 @@ visual.to('.visual_img_box', {
 })
 ScrollTrigger.create({
    animation: visual,
-   trigger: ".main_text_1",
+   trigger: ".main_visual",
    start: 'top top',
-   end: "+=120%",
+   end: "+=100%",
    scrub: true,
    pin: '.main_visual'
 })
