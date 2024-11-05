@@ -1,6 +1,14 @@
 // main.js
 
-//header
+// scroll_top
+const topBtn = document.querySelector('.contact_bottom button')
+
+topBtn.addEventListener('click', () => {
+   window.scrollTo({ top: 0, behavior: 'smooth' });
+   return false;
+})
+
+//header_scroll
 const header = document.getElementById('header');
 const aboutMeSection = document.querySelector('.about_me');
 
@@ -13,6 +21,57 @@ window.addEventListener('scroll', () => {
       header.classList.remove('fixed');
    }
 });
+
+//header_side
+const navOpenBtn = document.querySelector('.nav_btn')
+const navBtnIcon = document.querySelector('.nav_btn i')
+const nav = document.querySelector('.nav_side')
+
+let isOpen = false;
+
+navOpenBtn.addEventListener('click', function() {
+   if (isOpen) {
+      navBtnIcon.className = 'ri-menu-line';
+      nav.style.display = 'none';
+      document.querySelector('html').style.overflow = 'visible'
+   } else {
+      navBtnIcon.className = 'ri-close-line';
+      nav.style.display = 'flex';
+      document.querySelector('html').style.overflow = 'hidden'
+   }
+   isOpen = !isOpen;
+});
+
+//header_section 구분
+document.addEventListener('DOMContentLoaded', function() {
+   const links = document.querySelectorAll('.nav_origin a');
+
+   const sections = document.querySelectorAll('section');
+
+   const observer = new IntersectionObserver((entries) => {
+      requestAnimationFrame(() => {
+         entries.forEach(entry => {
+            const id = entry.target.id;
+            const link = document.querySelector(`.nav_origin a[href="#${id}"]`);
+
+            if (link) {
+               if (entry.isIntersecting) {
+                  link.classList.add('active');
+               } else {
+                  link.classList.remove('active');
+               }
+            }
+         });
+      });
+   }, {
+      threshold: 0.5
+   });
+
+   sections.forEach(section => {
+      observer.observe(section);
+   });
+});
+
 
 //main_visual
 const imgBox = [
@@ -126,7 +185,7 @@ const handleDesignLeave = (e) => {
 };
 designScrollListener();
 
-
+//contact
 const contact = document.querySelector('#contact');
 const contextText = document.querySelectorAll('.contact_text span');
 
@@ -144,20 +203,10 @@ const handleScroll = () => {
 };
 window.addEventListener('scroll', handleScroll);
 
-// scroll_top
-const topBtn = document.querySelector('.contact_bottom button')
-
-topBtn.addEventListener('click', () => {
-   window.scrollTo({ top: 0, behavior: 'smooth' });
-   return false;
-})
 
 
 
-
-
-
-//swiper
+//swiper_skill
 const skillSwiper = new Swiper('.skills .swiper-container', {
    direction: 'horizontal',
    slidePerView: 1,
@@ -170,6 +219,7 @@ const skillSwiper = new Swiper('.skills .swiper-container', {
    },
 })
 
+//swiper_portfolio
 const portSwiper = new Swiper('.portfolio .swiper-pub', {
    direction: 'horizontal',
    slidePerView: 1,
@@ -189,11 +239,10 @@ const portSwiper = new Swiper('.portfolio .swiper-pub', {
       }
    },
    navigation : {
-		nextEl : '.button-next',
-		prevEl : '.button-prev'
+		nextEl : '.button_next',
+		prevEl : '.button_prev'
 	}
-})
-
+});
 const designSwiper = new Swiper('.swiper-design', {
    direction: 'horizontal',
    spaceBetween: '-73px',
@@ -202,8 +251,8 @@ const designSwiper = new Swiper('.swiper-design', {
       draggable: true,
    },
    navigation: {
-      nextEl: '.button-next',
-      prevEl: '.button-prev',
+      nextEl: '.button_next',
+      prevEl: '.button_prev',
    },
    breakpoints: {
       768: {
@@ -230,8 +279,8 @@ const jsReactSwiper = new Swiper('.swiper-js', {
       draggable: true,
    },
    navigation: {
-      nextEl: '.button-next',
-      prevEl: '.button-prev',
+      nextEl: '.button_next',
+      prevEl: '.button_prev',
    },
    breakpoints: {
       768: {
@@ -252,33 +301,83 @@ const jsReactSwiper = new Swiper('.swiper-js', {
 });
 
 
-
 // 스크롤 트리거
 gsap.registerPlugin(ScrollTrigger);
 
+//scrollTrigger_mainVisual
 const visual = gsap.timeline()
-visual.to('.main_text_1', {
-   top: '50%',
-   left: '20%',
-   duration: 1,
-})
-visual.to('.main_text_2', {
-   top: '40%',
-   left:'80%',
-   fontSize: '140px',
-   duration: 1,
-})
-visual.to('.main_text_3', {
-   top: '70%',
-   left:'75%',
-   fontSize: '140px',
-   zIndex: 9999,
-   duration: 1,
-})
-visual.to('.visual_img_box', {
-   scale: 1.5,
-   duration: 1,
-})
+if (window.matchMedia("(max-width: 768px)").matches) {
+   visual.to('.main_text_1', {
+      top: '58%',
+      left: '50%',
+      duration: 1,
+   });
+   visual.to('.main_text_2', {
+      top: '70%',
+      left: '50%',
+      fontSize: '70px',
+      duration: 1,
+   });
+   visual.to('.main_text_3', {
+      top: '80%',
+      left: '50%',
+      fontSize: '70px',
+      zIndex: 9999,
+      duration: 1,
+   });
+   visual.to('.visual_img_box', {
+      top: '30%',
+      scale: 1.3,
+      zIndex: 9999,
+      duration: 1,
+   });
+} else if (window.matchMedia("(max-width: 1024px)").matches) {
+   visual.to('.main_text_1', {
+      top: '40%',
+      left: '15%',
+      duration: 1,
+   });
+   visual.to('.main_text_2', {
+      top: '30%',
+      left: '75%',
+      fontSize: '120px',
+      duration: 1,
+   });
+   visual.to('.main_text_3', {
+      top: '60%',
+      left: '70%',
+      fontSize: '120px',
+      zIndex: 9999,
+      duration: 1,
+   });
+   visual.to('.visual_img_box', {
+      scale: 1.5,
+      duration: 1,
+   });
+} else {
+   visual.to('.main_text_1', {
+      top: '50%',
+      left: '20%',
+      duration: 1,
+   });
+   visual.to('.main_text_2', {
+      top: '40%',
+      left: '80%',
+      fontSize: '140px',
+      duration: 1,
+   });
+   visual.to('.main_text_3', {
+      top: '70%',
+      left: '75%',
+      fontSize: '140px',
+      zIndex: 9999,
+      duration: 1,
+   });
+   visual.to('.visual_img_box', {
+      scale: 1.5,
+      duration: 1,
+   });
+}
 ScrollTrigger.create({
    animation: visual,
    trigger: ".main_visual",
@@ -288,6 +387,7 @@ ScrollTrigger.create({
    pin: '.main_visual'
 })
 
+//scrollTrigger_Bubble
 const bubble = gsap.timeline()
 bubble.to('.bubble', {
    top: "-200px",
@@ -303,6 +403,7 @@ ScrollTrigger.create({
    pin: '.about_me',
 })
 
+//scrollTrigger_skill
 const skill = gsap.timeline()
 skill.to(".skills", {
    scale: 1.1,
@@ -316,6 +417,7 @@ ScrollTrigger.create({
    pin: '.skills'
 })
 
+//scrollTrigger_portfolio
 const portHorizon = gsap.timeline()
 portHorizon.to('.horizon', {
    left: 0,
@@ -344,6 +446,7 @@ ScrollTrigger.create({
    pin: true,
 })
 
+//scrollTrigger_contact
 const contactPath = gsap.timeline()
 contactPath.to(".contact_wrap ", {
    borderRadius : 0,
