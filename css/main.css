@@ -724,7 +724,7 @@ section {
    gap: 100px;
    position: absolute;top: 50%;
    padding: 0 20px;
-   z-index: 9999;
+   z-index: 1;
    cursor: pointer;
 }
 .navigation .button_next img, .button_prev img {
